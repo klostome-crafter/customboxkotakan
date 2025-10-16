@@ -63,6 +63,26 @@
             color: var(--secondary);
         }
         
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1600952840455-8d57c3b561a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');
@@ -123,6 +143,12 @@
             margin-bottom: 15px;
         }
         
+        .section-title p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
         /* Services */
         .services-grid {
             display: grid;
@@ -137,6 +163,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             padding: 30px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
         }
         
         .service-card i {
@@ -149,6 +180,81 @@
             font-size: 22px;
             margin-bottom: 15px;
             color: var(--primary);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 18px;
+        }
+        
+        .gallery-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gallery-info h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .gallery-info p {
+            color: #6c757d;
+            font-size: 14px;
         }
         
         /* CTA Section */
@@ -164,12 +270,48 @@
             margin-bottom: 20px;
         }
         
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 40px 0;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #adb5bd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
             text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
         }
         
         /* Responsive */
@@ -179,12 +321,25 @@
                 gap: 15px;
             }
             
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
             .hero h1 {
                 font-size: 36px;
             }
             
             .hero p {
                 font-size: 18px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
     </style>
@@ -198,6 +353,12 @@
                     <i class="fas fa-box"></i>
                     CustomBox Premium
                 </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#gallery">Portfolio</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
                 <a href="https://wa.me/628974420966" class="whatsapp-button">
                     <i class="fab fa-whatsapp"></i>
                     Pesan Sekarang
@@ -207,7 +368,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <h1>Box Custom Premium untuk Florist</h1>
             <p>Spesialis pembuatan box custom dengan bentuk dan jumlah sesuai kebutuhan pemesan. Sistem pre order dengan fokus pada kepuasan pelanggan florist.</p>
@@ -219,7 +380,7 @@
     </section>
 
     <!-- Services Section -->
-    <section>
+    <section id="services">
         <div class="container">
             <div class="section-title">
                 <h2>Layanan Kami</h2>
@@ -245,8 +406,115 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio Hasil Produksi</h2>
+                <p>Lihat koleksi box custom yang telah kami produksi untuk berbagai klien</p>
+            </div>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="florist">Box Florist</button>
+                <button class="filter-btn" data-filter="retail">Box Retail</button>
+                <button class="filter-btn" data-filter="hadiah">Box Hadiah</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Box Florist 1 -->
+                <div class="gallery-item" data-category="florist">
+                    <div class="gallery-img">
+                        [FOTO BOX FLORIST 1]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Mawar Premium</h4>
+                        <p>Box khusus untuk buket mawar dengan desain window</p>
+                    </div>
+                </div>
+                
+                <!-- Box Florist 2 -->
+                <div class="gallery-item" data-category="florist">
+                    <div class="gallery-img">
+                        [FOTO BOX FLORIST 2]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Bunga Segar</h4>
+                        <p>Box dengan ventilasi untuk menjaga kesegaran bunga</p>
+                    </div>
+                </div>
+                
+                <!-- Box Retail 1 -->
+                <div class="gallery-item" data-category="retail">
+                    <div class="gallery-img">
+                        [FOTO BOX RETAIL 1]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Produk Kosmetik</h4>
+                        <p>Kemasan elegan untuk brand kosmetik lokal</p>
+                    </div>
+                </div>
+                
+                <!-- Box Retail 2 -->
+                <div class="gallery-item" data-category="retail">
+                    <div class="gallery-img">
+                        [FOTO BOX RETAIL 2]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Makanan Premium</h4>
+                        <p>Packaging untuk produk makanan berkualitas</p>
+                    </div>
+                </div>
+                
+                <!-- Box Hadiah 1 -->
+                <div class="gallery-item" data-category="hadiah">
+                    <div class="gallery-img">
+                        [FOTO BOX HADIAH 1]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Anniversary</h4>
+                        <p>Box hadiah spesial untuk hari jadi</p>
+                    </div>
+                </div>
+                
+                <!-- Box Hadiah 2 -->
+                <div class="gallery-item" data-category="hadiah">
+                    <div class="gallery-img">
+                        [FOTO BOX HADIAH 2]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Wedding Gift</h4>
+                        <p>Kemasan eksklusif untuk hadiah pernikahan</p>
+                    </div>
+                </div>
+                
+                <!-- Box Florist 3 -->
+                <div class="gallery-item" data-category="florist">
+                    <div class="gallery-img">
+                        [FOTO BOX FLORIST 3]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Buket Minimalis</h4>
+                        <p>Desain sederhana namun elegan untuk bunga</p>
+                    </div>
+                </div>
+                
+                <!-- Box Retail 3 -->
+                <div class="gallery-item" data-category="retail">
+                    <div class="gallery-img">
+                        [FOTO BOX RETAIL 3]
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Box Handmade</h4>
+                        <p>Kemasan untuk produk kerajinan tangan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" id="contact">
         <div class="container">
             <h2>Siap Meningkatkan Kemasan Produk Anda?</h2>
             <p>Hubungi kami sekarang untuk konsultasi gratis dan dapatkan penawaran terbaik untuk box custom bisnis Anda</p>
@@ -260,8 +528,34 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 CustomBox Premium. All Rights Reserved.</p>
-            <p style="margin-top: 10px; color: #ccc;">WhatsApp: 0897-4420-966 | Email: info@customboxpremium.com</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CustomBox Premium</h3>
+                    <p>Spesialis pembuatan box custom dengan kualitas premium dan desain elegan. Melayani berbagai kebutuhan bisnis dengan fokus pada kepuasan pelanggan.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-phone"></i> 0897-4420-966</p>
+                    <p><i class="fas fa-envelope"></i> info@customboxpremium.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan</h3>
+                    <a href="#services">Box untuk Florist</a>
+                    <a href="#services">Box Retail</a>
+                    <a href="#services">Box Hadiah</a>
+                    <a href="#gallery">Portfolio</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Ikuti Kami</h3>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CustomBox Premium. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -279,6 +573,39 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+
+        // Gallery Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // WhatsApp redirect dengan pre-filled message
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const message = "Halo, saya tertarik dengan layanan pembuatan box custom. Bisa konsultasi lebih lanjut?";
+                this.href = `https://wa.me/628974420966?text=${encodeURIComponent(message)}`;
             });
         });
     </script>
